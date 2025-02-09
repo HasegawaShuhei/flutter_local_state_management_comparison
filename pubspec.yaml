@@ -1,0 +1,11 @@
+name: flutter_local_state_management_comparison
+publish_to: "none"
+environment:
+  sdk: ^3.6.0
+version: 0.1.0
+
+workspace:
+  - apps/statefulwidget_pattern
+  - packages/common
+  - packages/domain
+  - packages/repository
