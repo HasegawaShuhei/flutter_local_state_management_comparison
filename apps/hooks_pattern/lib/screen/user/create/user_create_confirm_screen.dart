@@ -1,6 +1,7 @@
 import 'package:common_ui/common_ui.dart';
 import 'package:domain/state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:util/util.dart';
 
@@ -18,16 +19,16 @@ class UserCreateConfirmScreen extends StatelessWidget {
   }
 }
 
-class _Body extends ConsumerWidget {
+class _Body extends HookConsumerWidget {
   const _Body();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userCreateState = ref.watch(userCreateStateNotifierProvider);
-    final isConfirmationChecked = ValueNotifier(false);
+    final isConfirmationCheckedValueNotifier = useValueNotifier(false);
 
     Future<void> _onCreateUser() async {
-      if (!isConfirmationChecked.value) {
+      if (!isConfirmationCheckedValueNotifier.value) {
         context.showSnackBar('Please confirm the information above is correct');
         return;
       }
@@ -61,13 +62,14 @@ class _Body extends ConsumerWidget {
           const SizedBox(height: 8),
           Row(
             children: [
-              ValueListenableBuilder<bool>(
-                valueListenable: isConfirmationChecked,
-                builder: (_, isChecked, __) {
+              HookBuilder(
+                builder: (_) {
+                  final isConfirmationChecked =
+                      useValueListenable(isConfirmationCheckedValueNotifier);
                   return Checkbox(
-                    value: isChecked,
+                    value: isConfirmationChecked,
                     onChanged: (value) {
-                      isConfirmationChecked.value = value!;
+                      isConfirmationCheckedValueNotifier.value = value!;
                     },
                   );
                 },

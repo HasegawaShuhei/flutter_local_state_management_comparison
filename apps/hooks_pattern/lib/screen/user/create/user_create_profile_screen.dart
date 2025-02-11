@@ -1,5 +1,6 @@
 import 'package:domain/state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'user_create_private_info_screen.dart';
@@ -18,85 +19,67 @@ class UserCreateProfileScreen extends StatelessWidget {
   }
 }
 
-class _Body extends ConsumerStatefulWidget {
+class _Body extends HookConsumerWidget {
   const _Body();
 
   @override
-  ConsumerState<_Body> createState() => _BodyState();
-}
-
-class _BodyState extends ConsumerState<_Body> {
-  late TextEditingController _firstNameController;
-  late TextEditingController _lastNameController;
-  final _formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    _firstNameController = TextEditingController();
-    _lastNameController = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _firstNameController.dispose();
-    _lastNameController.dispose();
-    super.dispose();
-  }
-
-  String? _nameValidator(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter some text';
-    }
-    return null;
-  }
-
-  Future<void> _onNextPressed() async {
-    if (!_formKey.currentState!.validate()) {
-      return;
-    }
-
-    ref.read(userCreateStateNotifierProvider.notifier).setProfile(
-          firstName: _firstNameController.text,
-          lastName: _lastNameController.text,
-        );
-
-    await Navigator.push(
-      context,
-      MaterialPageRoute<void>(
-        builder: (context) => const UserCreatePrivateInfoScreen(),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // prevent from disposing while creating user
     ref.listen(userCreateStateNotifierProvider, (_, __) {});
+
+    final formKey = useMemoized(GlobalKey<FormState>.new);
+    final firstNameController = useTextEditingController();
+    final lastNameController = useTextEditingController();
+
+    String? nameValidator(String? value) {
+      if (value == null || value.isEmpty) {
+        return 'Please enter some text';
+      }
+      return null;
+    }
+
+    Future<void> onNextPressed() async {
+      if (!formKey.currentState!.validate()) {
+        return;
+      }
+
+      ref.read(userCreateStateNotifierProvider.notifier).setProfile(
+            firstName: firstNameController.text,
+            lastName: lastNameController.text,
+          );
+
+      await Navigator.push(
+        context,
+        MaterialPageRoute<void>(
+          builder: (context) => const UserCreatePrivateInfoScreen(),
+        ),
+      );
+    }
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Form(
-        key: _formKey,
+        key: formKey,
         child: Column(
           children: [
             TextFormField(
-              controller: _firstNameController,
-              validator: _nameValidator,
+              controller: firstNameController,
+              validator: nameValidator,
               decoration: const InputDecoration(
                 labelText: 'First Name',
               ),
             ),
             const SizedBox(height: 16),
             TextFormField(
-              controller: _lastNameController,
-              validator: _nameValidator,
+              controller: lastNameController,
+              validator: nameValidator,
               decoration: const InputDecoration(
                 labelText: 'Last Name',
               ),
             ),
             const SizedBox(height: 32),
             ElevatedButton(
-              onPressed: _onNextPressed,
+              onPressed: onNextPressed,
               child: const Text('next'),
             ),
           ],
