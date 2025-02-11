@@ -3,6 +3,7 @@ import 'package:domain/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'task_create_screen.dart';
 import 'task_details_screen.dart';
 
 class TasksScreen extends ConsumerWidget {
@@ -15,6 +16,16 @@ class TasksScreen extends ConsumerWidget {
         context,
         MaterialPageRoute<void>(
           builder: (context) => TaskDetailsScreen(id),
+        ),
+      );
+    }
+
+    Future<void> onTapFAB() async {
+      await Navigator.push(
+        context,
+        MaterialPageRoute<void>(
+          fullscreenDialog: true,
+          builder: (context) => const TaskCreateScreen(),
         ),
       );
     }
@@ -42,7 +53,9 @@ class TasksScreen extends ConsumerWidget {
                       onTap: () async => onTapTask(task.id),
                       trailing: Checkbox(
                         value: task.isCompleted,
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          // TODO(any): 完了のトグル実装
+                        },
                       ),
                     );
                   },
@@ -51,6 +64,10 @@ class TasksScreen extends ConsumerWidget {
             );
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: onTapFAB,
+        child: const Icon(Icons.add),
       ),
     );
   }

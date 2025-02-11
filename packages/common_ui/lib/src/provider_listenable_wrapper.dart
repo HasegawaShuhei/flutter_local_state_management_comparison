@@ -42,7 +42,11 @@ class _ProviderListenableWrapperState
           );
         }
         if (next is AsyncData) {
-          OverlayLoadingInherited.of(context).stopLoading();
+          if (next.isLoading) {
+            OverlayLoadingInherited.of(context).startLoading();
+          } else {
+            OverlayLoadingInherited.of(context).stopLoading();
+          }
         }
       },
     );

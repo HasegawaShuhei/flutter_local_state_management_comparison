@@ -6,7 +6,7 @@ part of 'task.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dummyTaskDtoHash() => r'a46c0e6d9f26f3c332ccac2de5289b06367f92df';
+String _$dummyTaskDtoHash() => r'596bdb2453a53e878f308d165c2324ff6e326cbb';
 
 /// Copied from Dart SDK
 class _SystemHash {

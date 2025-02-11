@@ -7,10 +7,12 @@ class BaseScaffold extends StatelessWidget {
     super.key,
     this.appBar,
     required this.body,
+    this.floatingActionButton,
   });
 
   final PreferredSizeWidget? appBar;
   final Widget body;
+  final Widget? floatingActionButton;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class BaseScaffold extends StatelessWidget {
       child: Scaffold(
         appBar: appBar,
         body: body,
+        floatingActionButton: floatingActionButton,
       ),
     );
   }

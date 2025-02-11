@@ -9,6 +9,7 @@ workspace:
   - packages/common_ui
   - packages/domain
   - packages/repository
+  - packages/util
 
 dev_dependencies:
   custom_lint: ^0.7.3

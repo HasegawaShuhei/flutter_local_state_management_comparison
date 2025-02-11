@@ -35,7 +35,9 @@ class TaskDetailsScreen extends ConsumerWidget {
                           const Text('Completed'),
                           Checkbox(
                             value: task.isCompleted,
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              // TODO(any): 完了のトグル実装
+                            },
                           ),
                         ],
                       ),

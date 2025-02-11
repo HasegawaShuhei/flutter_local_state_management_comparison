@@ -8,6 +8,6 @@ part 'task.g.dart';
 
 @Riverpod(keepAlive: true)
 TaskDto dummyTaskDto(Ref ref, int id) {
-  final tasks = ref.watch(dummyTasksDtoProvider).items;
+  final tasks = ref.watch(dummyTasksDtoNotifierProvider).items;
   return tasks.firstWhere((task) => task.id == id);
 }
