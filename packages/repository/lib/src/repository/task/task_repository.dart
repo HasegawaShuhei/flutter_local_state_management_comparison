@@ -2,29 +2,26 @@ import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../dto/task/task_dto.dart';
+import '../../dto/task/tasks_dto.dart';
+import '../../dummy_data/task/task.dart';
+import '../../dummy_data/task/tasks.dart';
 
 part 'task_repository.g.dart';
 
 @riverpod
-TaskRepository taskRepository(Ref ref) => TaskRepository(
-    // ref.watch(apiClientProvider),
-    );
+TaskRepository taskRepository(Ref ref) => TaskRepository(ref);
 
+// 今回は簡易的に実装するため、providerで保持したデータを返却する
 class TaskRepository {
-  // const TaskRepository(
-  //   this._apiClient,
-  // );
+  TaskRepository(this._ref);
 
-  // final ApiClient _apiClient;
+  final Ref _ref;
 
-  Future<TaskDto> fetchTask() async {
-    final dammyData = {
-      'id': 1,
-      'title': 'title',
-      'description': 'description',
-      'isCompleted': false,
-      'createdAt': DateTime.now().toIso8601String(),
-    };
-    return TaskDto.fromJson(dammyData);
+  Future<TasksDto> fetchTasks() async {
+    return _ref.read(dummyTasksDtoProvider);
+  }
+
+  Future<TaskDto> fetchTask(int id) async {
+    return _ref.read(dummyTaskDtoProvider(id));
   }
 }
