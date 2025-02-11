@@ -6,6 +6,10 @@ version: 0.1.0
 
 workspace:
   - apps/statefulwidget_pattern
-  - packages/common
+  - packages/common_ui
   - packages/domain
   - packages/repository
+
+dev_dependencies:
+  custom_lint: ^0.7.3
+  riverpod_lint: ^2.6.4
