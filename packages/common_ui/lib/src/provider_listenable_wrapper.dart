@@ -8,10 +8,12 @@ class ProviderListenableWrapper<T> extends ConsumerStatefulWidget {
     super.key,
     required this.provider,
     required this.child,
+    this.showLoadingOnReload = false,
   });
 
   final ProviderListenable<T> provider;
   final Widget child;
+  final bool showLoadingOnReload;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -42,7 +44,7 @@ class _ProviderListenableWrapperState
           );
         }
         if (next is AsyncData) {
-          if (next.isLoading) {
+          if (next.isLoading && widget.showLoadingOnReload) {
             OverlayLoadingInherited.of(context).startLoading();
           } else {
             OverlayLoadingInherited.of(context).stopLoading();

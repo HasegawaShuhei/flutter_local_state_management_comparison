@@ -55,23 +55,19 @@ class _BodyState extends ConsumerState<_Body> {
     if (!_formKey.currentState!.validate()) {
       return;
     }
-    try {
-      context.startLoading();
-      await ref.read(createTaskUseCaseProvider).execute(
-            title: _titleController.text,
-            description: _descriptionController.text,
-          );
-      if (mounted) {
-        context
-          ..stopLoading()
-          ..showSnackBar('Task created successfully');
-        Navigator.of(context).pop();
-      }
-    } on Exception catch (e) {
-      if (mounted) {
-        context.showSnackBar(e.toString());
-      }
-    }
+    await context.asyncLoading(
+      () async {
+        await ref.read(createTaskUseCaseProvider).execute(
+              title: _titleController.text,
+              description: _descriptionController.text,
+            );
+        if (mounted) {
+          context.showSnackBar('Task created successfully');
+          Navigator.of(context).pop();
+        }
+      },
+      onError: (e, __) => context.showSnackBar(e.toString()),
+    );
   }
 
   @override
