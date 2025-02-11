@@ -1,7 +1,7 @@
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../repository.dart';
+import '../../dto/task/task_dto.dart';
 
 part 'task_repository.g.dart';
 
