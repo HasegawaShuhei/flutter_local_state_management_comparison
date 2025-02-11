@@ -4,13 +4,13 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../state/task/tasks.dart';
 
-part 'create.g.dart';
+part 'task_create_use_case.g.dart';
 
 @riverpod
-CreateTaskUseCase createTaskUseCase(Ref ref) => CreateTaskUseCase(ref);
+TaskCreateUseCase taskCreateUseCase(Ref ref) => TaskCreateUseCase(ref);
 
-class CreateTaskUseCase {
-  const CreateTaskUseCase(this._ref);
+class TaskCreateUseCase {
+  const TaskCreateUseCase(this._ref);
   final Ref _ref;
 
   Future<void> execute({

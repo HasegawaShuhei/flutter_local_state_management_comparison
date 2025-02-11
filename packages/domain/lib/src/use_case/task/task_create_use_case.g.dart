@@ -1,28 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'create.dart';
+part of 'task_create_use_case.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$createTaskUseCaseHash() => r'eaaa02e4f0b94d61470295a1a91c910541aad966';
+String _$taskCreateUseCaseHash() => r'1ae237e47a8639b75b719a0596ee1456a288fcdd';
 
-/// See also [createTaskUseCase].
-@ProviderFor(createTaskUseCase)
-final createTaskUseCaseProvider =
-    AutoDisposeProvider<CreateTaskUseCase>.internal(
-  createTaskUseCase,
-  name: r'createTaskUseCaseProvider',
+/// See also [taskCreateUseCase].
+@ProviderFor(taskCreateUseCase)
+final taskCreateUseCaseProvider =
+    AutoDisposeProvider<TaskCreateUseCase>.internal(
+  taskCreateUseCase,
+  name: r'taskCreateUseCaseProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$createTaskUseCaseHash,
+      : _$taskCreateUseCaseHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef CreateTaskUseCaseRef = AutoDisposeProviderRef<CreateTaskUseCase>;
+typedef TaskCreateUseCaseRef = AutoDisposeProviderRef<TaskCreateUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

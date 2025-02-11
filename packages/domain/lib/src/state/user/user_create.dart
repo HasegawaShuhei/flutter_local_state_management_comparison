@@ -4,13 +4,13 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'user.dart';
 
-part 'create_user.freezed.dart';
-part 'create_user.g.dart';
+part 'user_create.freezed.dart';
+part 'user_create.g.dart';
 
 @riverpod
-class CreateUserStateNotifier extends _$CreateUserStateNotifier {
+class UserCreateStateNotifier extends _$UserCreateStateNotifier {
   @override
-  CreateUserState build() => const CreateUserState();
+  UserCreateState build() => const UserCreateState();
 
   void setProfile({
     required String firstName,
@@ -32,7 +32,7 @@ class CreateUserStateNotifier extends _$CreateUserStateNotifier {
     );
   }
 
-  Future<void> createUser() async {
+  Future<void> create() async {
     await ref.read(userRepositoryProvider).createUser(
           firstName: state.firstName,
           lastName: state.lastName,
@@ -44,12 +44,12 @@ class CreateUserStateNotifier extends _$CreateUserStateNotifier {
 }
 
 @freezed
-class CreateUserState with _$CreateUserState {
-  const factory CreateUserState({
+class UserCreateState with _$UserCreateState {
+  const factory UserCreateState({
     @Default('') String firstName,
     @Default('') String lastName,
     @Default('') String address,
     @Default('') String phoneNumber,
-  }) = _CreateUserState;
-  const CreateUserState._();
+  }) = _UserCreateState;
+  const UserCreateState._();
 }

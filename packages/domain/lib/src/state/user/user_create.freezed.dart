@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'create_user.dart';
+part of 'user_create.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,40 +15,40 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$CreateUserState {
+mixin _$UserCreateState {
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
 
-  /// Create a copy of CreateUserState
+  /// Create a copy of UserCreateState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CreateUserStateCopyWith<CreateUserState> get copyWith =>
+  $UserCreateStateCopyWith<UserCreateState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CreateUserStateCopyWith<$Res> {
-  factory $CreateUserStateCopyWith(
-          CreateUserState value, $Res Function(CreateUserState) then) =
-      _$CreateUserStateCopyWithImpl<$Res, CreateUserState>;
+abstract class $UserCreateStateCopyWith<$Res> {
+  factory $UserCreateStateCopyWith(
+          UserCreateState value, $Res Function(UserCreateState) then) =
+      _$UserCreateStateCopyWithImpl<$Res, UserCreateState>;
   @useResult
   $Res call(
       {String firstName, String lastName, String address, String phoneNumber});
 }
 
 /// @nodoc
-class _$CreateUserStateCopyWithImpl<$Res, $Val extends CreateUserState>
-    implements $CreateUserStateCopyWith<$Res> {
-  _$CreateUserStateCopyWithImpl(this._value, this._then);
+class _$UserCreateStateCopyWithImpl<$Res, $Val extends UserCreateState>
+    implements $UserCreateStateCopyWith<$Res> {
+  _$UserCreateStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CreateUserState
+  /// Create a copy of UserCreateState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -80,11 +80,11 @@ class _$CreateUserStateCopyWithImpl<$Res, $Val extends CreateUserState>
 }
 
 /// @nodoc
-abstract class _$$CreateUserStateImplCopyWith<$Res>
-    implements $CreateUserStateCopyWith<$Res> {
-  factory _$$CreateUserStateImplCopyWith(_$CreateUserStateImpl value,
-          $Res Function(_$CreateUserStateImpl) then) =
-      __$$CreateUserStateImplCopyWithImpl<$Res>;
+abstract class _$$UserCreateStateImplCopyWith<$Res>
+    implements $UserCreateStateCopyWith<$Res> {
+  factory _$$UserCreateStateImplCopyWith(_$UserCreateStateImpl value,
+          $Res Function(_$UserCreateStateImpl) then) =
+      __$$UserCreateStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -92,14 +92,14 @@ abstract class _$$CreateUserStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CreateUserStateImplCopyWithImpl<$Res>
-    extends _$CreateUserStateCopyWithImpl<$Res, _$CreateUserStateImpl>
-    implements _$$CreateUserStateImplCopyWith<$Res> {
-  __$$CreateUserStateImplCopyWithImpl(
-      _$CreateUserStateImpl _value, $Res Function(_$CreateUserStateImpl) _then)
+class __$$UserCreateStateImplCopyWithImpl<$Res>
+    extends _$UserCreateStateCopyWithImpl<$Res, _$UserCreateStateImpl>
+    implements _$$UserCreateStateImplCopyWith<$Res> {
+  __$$UserCreateStateImplCopyWithImpl(
+      _$UserCreateStateImpl _value, $Res Function(_$UserCreateStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CreateUserState
+  /// Create a copy of UserCreateState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -109,7 +109,7 @@ class __$$CreateUserStateImplCopyWithImpl<$Res>
     Object? address = null,
     Object? phoneNumber = null,
   }) {
-    return _then(_$CreateUserStateImpl(
+    return _then(_$UserCreateStateImpl(
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ class __$$CreateUserStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CreateUserStateImpl extends _CreateUserState {
-  const _$CreateUserStateImpl(
+class _$UserCreateStateImpl extends _UserCreateState {
+  const _$UserCreateStateImpl(
       {this.firstName = '',
       this.lastName = '',
       this.address = '',
@@ -155,14 +155,14 @@ class _$CreateUserStateImpl extends _CreateUserState {
 
   @override
   String toString() {
-    return 'CreateUserState(firstName: $firstName, lastName: $lastName, address: $address, phoneNumber: $phoneNumber)';
+    return 'UserCreateState(firstName: $firstName, lastName: $lastName, address: $address, phoneNumber: $phoneNumber)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateUserStateImpl &&
+            other is _$UserCreateStateImpl &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -176,23 +176,23 @@ class _$CreateUserStateImpl extends _CreateUserState {
   int get hashCode =>
       Object.hash(runtimeType, firstName, lastName, address, phoneNumber);
 
-  /// Create a copy of CreateUserState
+  /// Create a copy of UserCreateState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CreateUserStateImplCopyWith<_$CreateUserStateImpl> get copyWith =>
-      __$$CreateUserStateImplCopyWithImpl<_$CreateUserStateImpl>(
+  _$$UserCreateStateImplCopyWith<_$UserCreateStateImpl> get copyWith =>
+      __$$UserCreateStateImplCopyWithImpl<_$UserCreateStateImpl>(
           this, _$identity);
 }
 
-abstract class _CreateUserState extends CreateUserState {
-  const factory _CreateUserState(
+abstract class _UserCreateState extends UserCreateState {
+  const factory _UserCreateState(
       {final String firstName,
       final String lastName,
       final String address,
-      final String phoneNumber}) = _$CreateUserStateImpl;
-  const _CreateUserState._() : super._();
+      final String phoneNumber}) = _$UserCreateStateImpl;
+  const _UserCreateState._() : super._();
 
   @override
   String get firstName;
@@ -203,10 +203,10 @@ abstract class _CreateUserState extends CreateUserState {
   @override
   String get phoneNumber;
 
-  /// Create a copy of CreateUserState
+  /// Create a copy of UserCreateState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CreateUserStateImplCopyWith<_$CreateUserStateImpl> get copyWith =>
+  _$$UserCreateStateImplCopyWith<_$UserCreateStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

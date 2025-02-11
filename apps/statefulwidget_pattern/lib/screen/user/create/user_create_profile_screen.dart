@@ -56,7 +56,7 @@ class _BodyState extends ConsumerState<_Body> {
       return;
     }
 
-    ref.read(createUserStateNotifierProvider.notifier).setProfile(
+    ref.read(userCreateStateNotifierProvider.notifier).setProfile(
           firstName: _firstNameController.text,
           lastName: _lastNameController.text,
         );
@@ -72,7 +72,7 @@ class _BodyState extends ConsumerState<_Body> {
   @override
   Widget build(BuildContext context) {
     // prevent from disposing while creating user
-    ref.listen(createUserStateNotifierProvider, (_, __) {});
+    ref.listen(userCreateStateNotifierProvider, (_, __) {});
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Form(

@@ -23,7 +23,7 @@ class _Body extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userCreateState = ref.watch(createUserStateNotifierProvider);
+    final userCreateState = ref.watch(userCreateStateNotifierProvider);
     final isConfirmationChecked = ValueNotifier(false);
 
     Future<void> _onCreateUser() async {
@@ -33,7 +33,7 @@ class _Body extends ConsumerWidget {
       }
       await context.asyncLoading(
         () async {
-          await ref.read(createUserStateNotifierProvider.notifier).createUser();
+          await ref.read(userCreateStateNotifierProvider.notifier).create();
           if (context.mounted) {
             Navigator.popUntil(
               context,

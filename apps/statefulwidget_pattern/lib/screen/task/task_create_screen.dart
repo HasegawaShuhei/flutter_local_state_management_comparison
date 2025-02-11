@@ -57,7 +57,7 @@ class _BodyState extends ConsumerState<_Body> {
     }
     await context.asyncLoading(
       () async {
-        await ref.read(createTaskUseCaseProvider).execute(
+        await ref.read(taskCreateUseCaseProvider).execute(
               title: _titleController.text,
               description: _descriptionController.text,
             );

@@ -68,7 +68,7 @@ class _BodyState extends ConsumerState<_Body> {
     if (!_formKey.currentState!.validate()) {
       return;
     }
-    ref.read(createUserStateNotifierProvider.notifier).setPrivateInfo(
+    ref.read(userCreateStateNotifierProvider.notifier).setPrivateInfo(
           address: _addressController.text,
           phoneNumber: _phoneNumberController.text,
         );
