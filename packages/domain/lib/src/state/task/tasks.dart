@@ -7,7 +7,7 @@ import '../../model/task/tasks.dart';
 part 'tasks.g.dart';
 
 @riverpod
-Future<Tasks> task(Ref ref) async {
+Future<Tasks> tasks(Ref ref) async {
   final repository = ref.watch(taskRepositoryProvider);
   final dto = await repository.fetchTasks();
   return Tasks.fromDto(dto);
