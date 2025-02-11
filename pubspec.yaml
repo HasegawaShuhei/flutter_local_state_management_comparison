@@ -5,6 +5,7 @@ environment:
 version: 0.1.0
 
 workspace:
+  - apps/hooks_pattern
   - apps/statefulwidget_pattern
   - packages/common_ui
   - packages/domain

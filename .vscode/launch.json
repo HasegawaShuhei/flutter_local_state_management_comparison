@@ -11,6 +11,14 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "debug"
+    },
+    {
+      "name": "hooks_pattern debug",
+      "cwd": "apps/hooks_pattern",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug"
     }
   ]
 }
