@@ -52,6 +52,7 @@ class MyState extends State<OverlayLoadingWrapper> {
   }
 }
 
+// MEMO: 試しにInheritedWidgetでやってみたがProviderでいいかも
 class OverlayLoadingInherited extends InheritedWidget {
   const OverlayLoadingInherited({
     super.key,
