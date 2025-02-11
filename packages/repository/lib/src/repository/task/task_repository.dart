@@ -18,12 +18,12 @@ class TaskRepository {
   final Ref _ref;
 
   Future<TasksDto> fetchTasks() async {
-    await Future<void>.delayed(const Duration(seconds: 2));
+    await Future<void>.delayed(const Duration(seconds: 1));
     return _ref.read(dummyTasksDtoProvider);
   }
 
   Future<TaskDto> fetchTask(int id) async {
-    await Future<void>.delayed(const Duration(seconds: 2));
+    await Future<void>.delayed(const Duration(seconds: 1));
     return _ref.read(dummyTaskDtoProvider(id));
   }
 }
