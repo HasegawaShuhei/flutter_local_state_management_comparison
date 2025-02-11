@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tasks.dart';
+part of 'user.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dummyTasksDtoNotifierHash() =>
-    r'552295aa8bcdf8be05d64a78275920cdc31c14d5';
+String _$dummyUserDtoNotifierHash() =>
+    r'3dd014ca10dcbef1b584aef59eae01bee09fc471';
 
-/// See also [DummyTasksDtoNotifier].
-@ProviderFor(DummyTasksDtoNotifier)
-final dummyTasksDtoNotifierProvider =
-    NotifierProvider<DummyTasksDtoNotifier, TasksDto>.internal(
-  DummyTasksDtoNotifier.new,
-  name: r'dummyTasksDtoNotifierProvider',
+/// See also [DummyUserDtoNotifier].
+@ProviderFor(DummyUserDtoNotifier)
+final dummyUserDtoNotifierProvider =
+    NotifierProvider<DummyUserDtoNotifier, UserDto?>.internal(
+  DummyUserDtoNotifier.new,
+  name: r'dummyUserDtoNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$dummyTasksDtoNotifierHash,
+      : _$dummyUserDtoNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$DummyTasksDtoNotifier = Notifier<TasksDto>;
+typedef _$DummyUserDtoNotifier = Notifier<UserDto?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

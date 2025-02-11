@@ -3,6 +3,7 @@ import 'package:domain/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../user/user_details_screen.dart';
 import 'task_create_screen.dart';
 import 'task_details_screen.dart';
 
@@ -30,9 +31,25 @@ class TasksScreen extends ConsumerWidget {
       );
     }
 
+    Future<void> onUserIcon() async {
+      await Navigator.push(
+        context,
+        MaterialPageRoute<void>(
+          fullscreenDialog: true,
+          builder: (context) => const UserDetailsScreen(),
+        ),
+      );
+    }
+
     return BaseScaffold(
       appBar: AppBar(
         title: const Text('Tasks'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: onUserIcon,
+          ),
+        ],
       ),
       body: ProviderListenableWrapper(
         provider: tasksProvider,

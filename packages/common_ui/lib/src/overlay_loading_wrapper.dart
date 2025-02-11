@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class OverlayLoadingWrapper extends StatefulWidget {
@@ -86,5 +88,21 @@ extension OverlayLoadingContext on BuildContext {
 
   void stopLoading() {
     OverlayLoadingInherited.of(this).stopLoading();
+  }
+
+  Future<void> asyncLoading(
+    Future<void> Function() callback, {
+    FutureOr<void> Function(Object e, StackTrace st)? onError,
+  }) async {
+    startLoading();
+    try {
+      await callback();
+    } on Exception catch (e) {
+      if (onError != null) {
+        onError(e, StackTrace.current);
+      }
+    } finally {
+      stopLoading();
+    }
   }
 }

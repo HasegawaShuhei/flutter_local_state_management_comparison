@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tasks.dart';
+part of 'create_user.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dummyTasksDtoNotifierHash() =>
-    r'552295aa8bcdf8be05d64a78275920cdc31c14d5';
+String _$createUserStateNotifierHash() =>
+    r'0d649bf5c4835e242f727bc639a36b0557011931';
 
-/// See also [DummyTasksDtoNotifier].
-@ProviderFor(DummyTasksDtoNotifier)
-final dummyTasksDtoNotifierProvider =
-    NotifierProvider<DummyTasksDtoNotifier, TasksDto>.internal(
-  DummyTasksDtoNotifier.new,
-  name: r'dummyTasksDtoNotifierProvider',
+/// See also [CreateUserStateNotifier].
+@ProviderFor(CreateUserStateNotifier)
+final createUserStateNotifierProvider = AutoDisposeNotifierProvider<
+    CreateUserStateNotifier, CreateUserState>.internal(
+  CreateUserStateNotifier.new,
+  name: r'createUserStateNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$dummyTasksDtoNotifierHash,
+      : _$createUserStateNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$DummyTasksDtoNotifier = Notifier<TasksDto>;
+typedef _$CreateUserStateNotifier = AutoDisposeNotifier<CreateUserState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

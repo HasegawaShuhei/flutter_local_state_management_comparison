@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tasks.dart';
+part of 'user_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dummyTasksDtoNotifierHash() =>
-    r'552295aa8bcdf8be05d64a78275920cdc31c14d5';
+String _$userRepositoryHash() => r'7ef42b6a031b6e5aacb799135eff0fd2ec5290a6';
 
-/// See also [DummyTasksDtoNotifier].
-@ProviderFor(DummyTasksDtoNotifier)
-final dummyTasksDtoNotifierProvider =
-    NotifierProvider<DummyTasksDtoNotifier, TasksDto>.internal(
-  DummyTasksDtoNotifier.new,
-  name: r'dummyTasksDtoNotifierProvider',
+/// See also [userRepository].
+@ProviderFor(userRepository)
+final userRepositoryProvider = AutoDisposeProvider<UserRepository>.internal(
+  userRepository,
+  name: r'userRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$dummyTasksDtoNotifierHash,
+      : _$userRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$DummyTasksDtoNotifier = Notifier<TasksDto>;
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef UserRepositoryRef = AutoDisposeProviderRef<UserRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
