@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'screen/tasks_screen.dart';
+import 'screen/task/tasks_screen.dart';
 
 void main() {
   runApp(
