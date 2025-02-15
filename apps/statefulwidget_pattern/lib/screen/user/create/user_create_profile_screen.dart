@@ -4,28 +4,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'user_create_private_info_screen.dart';
 
-class UserCreateProfileScreen extends StatelessWidget {
+class UserCreateProfileScreen extends ConsumerStatefulWidget {
   const UserCreateProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: const _Body(),
-    );
-  }
+  ConsumerState<UserCreateProfileScreen> createState() =>
+      _UserCreateProfileScreenState();
 }
 
-class _Body extends ConsumerStatefulWidget {
-  const _Body();
-
-  @override
-  ConsumerState<_Body> createState() => _BodyState();
-}
-
-class _BodyState extends ConsumerState<_Body> {
+class _UserCreateProfileScreenState
+    extends ConsumerState<UserCreateProfileScreen> {
   late TextEditingController _firstNameController;
   late TextEditingController _lastNameController;
   final _formKey = GlobalKey<FormState>();
@@ -73,33 +61,38 @@ class _BodyState extends ConsumerState<_Body> {
   Widget build(BuildContext context) {
     // prevent from disposing while creating user
     ref.listen(userCreateStateNotifierProvider, (_, __) {});
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: _firstNameController,
-              validator: _nameValidator,
-              decoration: const InputDecoration(
-                labelText: 'First Name',
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: _firstNameController,
+                validator: _nameValidator,
+                decoration: const InputDecoration(
+                  labelText: 'First Name',
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _lastNameController,
-              validator: _nameValidator,
-              decoration: const InputDecoration(
-                labelText: 'Last Name',
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: _lastNameController,
+                validator: _nameValidator,
+                decoration: const InputDecoration(
+                  labelText: 'Last Name',
+                ),
               ),
-            ),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: _onNextPressed,
-              child: const Text('next'),
-            ),
-          ],
+              const SizedBox(height: 32),
+              ElevatedButton(
+                onPressed: _onNextPressed,
+                child: const Text('next'),
+              ),
+            ],
+          ),
         ),
       ),
     );

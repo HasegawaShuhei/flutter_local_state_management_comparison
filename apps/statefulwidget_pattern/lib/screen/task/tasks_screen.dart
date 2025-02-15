@@ -41,7 +41,8 @@ class TasksScreen extends ConsumerWidget {
       );
     }
 
-    return BaseScaffold(
+    return AsyncValueScaffold(
+      provider: tasksProvider,
       appBar: AppBar(
         title: const Text('Tasks'),
         actions: [
@@ -51,37 +52,26 @@ class TasksScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: ProviderListenableWrapper(
-        provider: tasksProvider,
-        child: Consumer(
-          builder: (_, ref, ___) {
-            final asyncTasks = ref.watch(tasksProvider);
-            return AsyncValueWrapper(
-              asyncValue: asyncTasks,
-              builder: (data) {
-                return ListView.separated(
-                  itemCount: data.items.length,
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemBuilder: (context, index) {
-                    final task = data.items[index];
-                    return ListTile(
-                      title: Text(task.title),
-                      subtitle: Text(task.description ?? ''),
-                      onTap: () async => onTapTask(task.id),
-                      trailing: Checkbox(
-                        value: task.isCompleted,
-                        onChanged: (value) {
-                          // TODO(any): 完了のトグル実装
-                        },
-                      ),
-                    );
-                  },
-                );
-              },
+      bodyBuilder: (data) {
+        return ListView.separated(
+          itemCount: data.items.length,
+          separatorBuilder: (_, __) => const Divider(),
+          itemBuilder: (context, index) {
+            final task = data.items[index];
+            return ListTile(
+              title: Text(task.title),
+              subtitle: Text(task.description ?? ''),
+              onTap: () async => onTapTask(task.id),
+              trailing: Checkbox(
+                value: task.isCompleted,
+                onChanged: (value) {
+                  // TODO(any): 完了のトグル実装
+                },
+              ),
             );
           },
-        ),
-      ),
+        );
+      },
       floatingActionButton: FloatingActionButton(
         onPressed: onTapFAB,
         child: const Icon(Icons.add),

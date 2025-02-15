@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// 全体ローディングが基本のプロジェクトなので使ってないが、bodyだけローディングの場合はこれでいい
 class AsyncValueWrapper<T> extends ConsumerWidget {
   const AsyncValueWrapper({
     super.key,
@@ -20,8 +21,10 @@ class AsyncValueWrapper<T> extends ConsumerWidget {
     return switch (asyncValue) {
       AsyncData(:final value) => builder(value),
       AsyncError(:final error, :final stackTrace) =>
-        errorBuilder?.call(error, stackTrace) ?? const SizedBox.shrink(),
-      AsyncLoading() => loadingWidget ?? const SizedBox.shrink(),
+        errorBuilder?.call(error, stackTrace) ??
+            Center(child: Text(error.toString())),
+      AsyncLoading() =>
+        loadingWidget ?? const Center(child: CircularProgressIndicator()),
       _ => const SizedBox.shrink(),
     };
   }

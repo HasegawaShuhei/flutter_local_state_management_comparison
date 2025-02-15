@@ -10,45 +10,34 @@ class TaskDetailsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return BaseScaffold(
+    return AsyncValueScaffold(
+      provider: taskProvider(id),
       appBar: AppBar(
         title: const Text('Task Details'),
       ),
-      body: ProviderListenableWrapper(
-        provider: taskProvider(id),
-        child: Consumer(
-          builder: (_, ref, ___) {
-            final asyncTask = ref.watch(taskProvider(id));
-            return AsyncValueWrapper(
-              asyncValue: asyncTask,
-              builder: (data) {
-                final task = data;
-                return Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(task.title),
-                      Text(task.description ?? ''),
-                      Row(
-                        children: [
-                          const Text('Completed'),
-                          Checkbox(
-                            value: task.isCompleted,
-                            onChanged: (value) {
-                              // TODO(any): 完了のトグル実装
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
+      bodyBuilder: (task) {
+        return Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(task.title),
+              Text(task.description ?? ''),
+              Row(
+                children: [
+                  const Text('Completed'),
+                  Checkbox(
+                    value: task.isCompleted,
+                    onChanged: (value) {
+                      // TODO(any): 完了のトグル実装
+                    },
                   ),
-                );
-              },
-            );
-          },
-        ),
-      ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

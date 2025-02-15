@@ -5,22 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'user_create_confirm_screen.dart';
 
-class UserCreatePrivateInfoScreen extends StatelessWidget {
+class UserCreatePrivateInfoScreen extends HookConsumerWidget {
   const UserCreatePrivateInfoScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Private Info'),
-      ),
-      body: const _Body(),
-    );
-  }
-}
-
-class _Body extends HookConsumerWidget {
-  const _Body();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -65,33 +51,38 @@ class _Body extends HookConsumerWidget {
       );
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Form(
-        key: formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: addressController,
-              validator: addressValidator,
-              decoration: const InputDecoration(
-                labelText: 'Address',
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Private Info'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: addressController,
+                validator: addressValidator,
+                decoration: const InputDecoration(
+                  labelText: 'Address',
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: phoneNumberController,
-              validator: phoneNumberValidator,
-              decoration: const InputDecoration(
-                labelText: 'Phone Number',
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: phoneNumberController,
+                validator: phoneNumberValidator,
+                decoration: const InputDecoration(
+                  labelText: 'Phone Number',
+                ),
               ),
-            ),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: onNextPressed,
-              child: const Text('next'),
-            ),
-          ],
+              const SizedBox(height: 32),
+              ElevatedButton(
+                onPressed: onNextPressed,
+                child: const Text('next'),
+              ),
+            ],
+          ),
         ),
       ),
     );

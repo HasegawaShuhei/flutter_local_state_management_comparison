@@ -5,22 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'user_create_private_info_screen.dart';
 
-class UserCreateProfileScreen extends StatelessWidget {
+class UserCreateProfileScreen extends HookConsumerWidget {
   const UserCreateProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: const _Body(),
-    );
-  }
-}
-
-class _Body extends HookConsumerWidget {
-  const _Body();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -56,33 +42,38 @@ class _Body extends HookConsumerWidget {
       );
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Form(
-        key: formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: firstNameController,
-              validator: nameValidator,
-              decoration: const InputDecoration(
-                labelText: 'First Name',
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: firstNameController,
+                validator: nameValidator,
+                decoration: const InputDecoration(
+                  labelText: 'First Name',
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: lastNameController,
-              validator: nameValidator,
-              decoration: const InputDecoration(
-                labelText: 'Last Name',
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: lastNameController,
+                validator: nameValidator,
+                decoration: const InputDecoration(
+                  labelText: 'Last Name',
+                ),
               ),
-            ),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: onNextPressed,
-              child: const Text('next'),
-            ),
-          ],
+              const SizedBox(height: 32),
+              ElevatedButton(
+                onPressed: onNextPressed,
+                child: const Text('next'),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'overlay_loading_wrapper.dart';
+import 'package:util/util.dart';
 
 class ProviderListenableWrapper<T> extends ConsumerStatefulWidget {
   const ProviderListenableWrapper({
@@ -22,20 +21,22 @@ class ProviderListenableWrapper<T> extends ConsumerStatefulWidget {
 
 class _ProviderListenableWrapperState
     extends ConsumerState<ProviderListenableWrapper<dynamic>> {
-  @override
-  void didChangeDependencies() {
-    OverlayLoadingInherited.of(context).startLoading();
-    super.didChangeDependencies();
-  }
+  // @override
+  // void didChangeDependencies() {
+  //   ref.startLoading();
+  //   // OverlayLoadingInherited.of(context).startLoading();
+  //   super.didChangeDependencies();
+  // }
 
   @override
   Widget build(BuildContext context) {
     final provider = widget.provider;
     ref.listen(
       provider,
-      (_, next) {
+      (prev, next) {
         if (next is AsyncError) {
-          OverlayLoadingInherited.of(context).stopLoading();
+          ref.stopLoading();
+          // OverlayLoadingInherited.of(context).stopLoading();
           final message = next.error.toString();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -45,9 +46,11 @@ class _ProviderListenableWrapperState
         }
         if (next is AsyncData) {
           if (next.isLoading && widget.showLoadingOnReload) {
-            OverlayLoadingInherited.of(context).startLoading();
+            ref.startLoading();
+            // OverlayLoadingInherited.of(context).startLoading();
           } else {
-            OverlayLoadingInherited.of(context).stopLoading();
+            ref.stopLoading();
+            // OverlayLoadingInherited.of(context).stopLoading();
           }
         }
       },

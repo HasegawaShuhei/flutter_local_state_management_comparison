@@ -49,7 +49,7 @@ typedef _TaskCreateScreenAction = ({
     if (!formKey.currentState!.validate()) {
       return;
     }
-    context.asyncLoading(
+    ref.asyncLoading(
       () async {
         await ref.read(taskCreateUseCaseProvider).execute(
               title: titleController.text,
@@ -77,53 +77,44 @@ typedef _TaskCreateScreenAction = ({
   );
 }
 
-class TaskCreateScreen extends StatelessWidget {
+class TaskCreateScreen extends HookConsumerWidget {
   const TaskCreateScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BaseScaffold(
-      appBar: AppBar(
-        title: const Text('Create Task'),
-      ),
-      body: const _Body(),
-    );
-  }
-}
-
-class _Body extends HookConsumerWidget {
-  const _Body();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final (:state, :action) = _useTaskCreateScreen();
 
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Form(
-        key: state.formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: state.titleController,
-              validator: action.titleValidator,
-              decoration: const InputDecoration(
-                labelText: 'Title',
+    return LoadableScaffold(
+      appBar: AppBar(
+        title: const Text('Create Task'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: state.formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: state.titleController,
+                validator: action.titleValidator,
+                decoration: const InputDecoration(
+                  labelText: 'Title',
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: state.descriptionController,
-              decoration: const InputDecoration(
-                labelText: 'Description',
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: state.descriptionController,
+                decoration: const InputDecoration(
+                  labelText: 'Description',
+                ),
               ),
-            ),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: action.onCreate,
-              child: const Text('create'),
-            ),
-          ],
+              const SizedBox(height: 32),
+              ElevatedButton(
+                onPressed: action.onCreate,
+                child: const Text('create'),
+              ),
+            ],
+          ),
         ),
       ),
     );

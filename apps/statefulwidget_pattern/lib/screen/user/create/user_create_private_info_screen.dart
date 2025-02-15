@@ -4,28 +4,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'user_create_confirm_screen.dart';
 
-class UserCreatePrivateInfoScreen extends StatelessWidget {
+class UserCreatePrivateInfoScreen extends ConsumerStatefulWidget {
   const UserCreatePrivateInfoScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Private Info'),
-      ),
-      body: const _Body(),
-    );
-  }
+  ConsumerState<UserCreatePrivateInfoScreen> createState() =>
+      _UserCreatePrivateInfoScreenState();
 }
 
-class _Body extends ConsumerStatefulWidget {
-  const _Body();
-
-  @override
-  ConsumerState<_Body> createState() => _BodyState();
-}
-
-class _BodyState extends ConsumerState<_Body> {
+class _UserCreatePrivateInfoScreenState
+    extends ConsumerState<UserCreatePrivateInfoScreen> {
   late TextEditingController _addressController;
   late TextEditingController _phoneNumberController;
   final _formKey = GlobalKey<FormState>();
@@ -83,33 +71,38 @@ class _BodyState extends ConsumerState<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: _addressController,
-              validator: _addressValidator,
-              decoration: const InputDecoration(
-                labelText: 'Address',
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Private Info'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: _addressController,
+                validator: _addressValidator,
+                decoration: const InputDecoration(
+                  labelText: 'Address',
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _phoneNumberController,
-              validator: _phoneNumberValidator,
-              decoration: const InputDecoration(
-                labelText: 'Phone Number',
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: _phoneNumberController,
+                validator: _phoneNumberValidator,
+                decoration: const InputDecoration(
+                  labelText: 'Phone Number',
+                ),
               ),
-            ),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: _onNextPressed,
-              child: const Text('next'),
-            ),
-          ],
+              const SizedBox(height: 32),
+              ElevatedButton(
+                onPressed: _onNextPressed,
+                child: const Text('next'),
+              ),
+            ],
+          ),
         ),
       ),
     );

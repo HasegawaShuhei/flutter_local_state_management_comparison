@@ -4,28 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:util/util.dart';
 
-class TaskCreateScreen extends StatelessWidget {
+class TaskCreateScreen extends ConsumerStatefulWidget {
   const TaskCreateScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BaseScaffold(
-      appBar: AppBar(
-        title: const Text('Create Task'),
-      ),
-      body: const _Body(),
-    );
-  }
+  ConsumerState<TaskCreateScreen> createState() => _TaskCreateScreenState();
 }
 
-class _Body extends ConsumerStatefulWidget {
-  const _Body();
-
-  @override
-  ConsumerState<_Body> createState() => _BodyState();
-}
-
-class _BodyState extends ConsumerState<_Body> {
+class _TaskCreateScreenState extends ConsumerState<TaskCreateScreen> {
   late TextEditingController _titleController;
   late TextEditingController _descriptionController;
   final _formKey = GlobalKey<FormState>();
@@ -55,7 +41,7 @@ class _BodyState extends ConsumerState<_Body> {
     if (!_formKey.currentState!.validate()) {
       return;
     }
-    await context.asyncLoading(
+    await ref.asyncLoading(
       () async {
         await ref.read(taskCreateUseCaseProvider).execute(
               title: _titleController.text,
@@ -72,32 +58,37 @@ class _BodyState extends ConsumerState<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: _titleController,
-              validator: _titleValidator,
-              decoration: const InputDecoration(
-                labelText: 'Title',
+    return LoadableScaffold(
+      appBar: AppBar(
+        title: const Text('Create Task'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: _titleController,
+                validator: _titleValidator,
+                decoration: const InputDecoration(
+                  labelText: 'Title',
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _descriptionController,
-              decoration: const InputDecoration(
-                labelText: 'Description',
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: _descriptionController,
+                decoration: const InputDecoration(
+                  labelText: 'Description',
+                ),
               ),
-            ),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: _onCreate,
-              child: const Text('create'),
-            ),
-          ],
+              const SizedBox(height: 32),
+              ElevatedButton(
+                onPressed: _onCreate,
+                child: const Text('create'),
+              ),
+            ],
+          ),
         ),
       ),
     );

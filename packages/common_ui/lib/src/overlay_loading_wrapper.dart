@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+// 試しにInheritedWidgetを使った例、使ってない
 class OverlayLoadingWrapper extends StatefulWidget {
   const OverlayLoadingWrapper({super.key, required this.child});
   final Widget child;
@@ -54,7 +55,6 @@ class MyState extends State<OverlayLoadingWrapper> {
   }
 }
 
-// MEMO: 試しにInheritedWidgetでやってみたがProviderでいいかも
 class OverlayLoadingInherited extends InheritedWidget {
   const OverlayLoadingInherited({
     super.key,
